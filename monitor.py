@@ -2,6 +2,7 @@ import tweepy
 import configparser
 import requests
 import json
+import pandas as pd
 
 # read configs
 config = configparser.ConfigParser()
@@ -32,7 +33,7 @@ public_tweets = api.home_timeline()
 #     print(tweets.text)
 
 
-#发送钉钉消息
+# 发送钉钉消息
 def dingmessage():
     # 请求的URL，WebHook地址
     webhook = "https://oapi.dingtalk.com/robot/send?access_token" \
@@ -59,5 +60,6 @@ def dingmessage():
     info = requests.post(url=webhook, data=message_json, headers=header)
     # 打印返回的结果
     print(info.text)
+
 
 dingmessage()
